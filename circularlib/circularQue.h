@@ -1,8 +1,10 @@
 #ifndef _CIRCULAR_QUE_H_
 #define _CIRCULAR_QUE_H_
 
+#include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <string.h>
 
 typedef struct CircularQue {
 	int32_t			 HeadCntr;
@@ -20,10 +22,10 @@ typedef struct {
 
 	void						(*Push)					(CircularQue_Typedef*  quePtr, void* data);
 	void*						(*Pop)					(CircularQue_Typedef*  quePtr);
-	bool						(*Free)					(CircularQue_Typedef*  quePtr);
+	bool						(*Free)					(CircularQue_Typedef** quePtr);
 
 	bool						(*IsFull)				(CircularQue_Typedef*  quePtr);
-	void						(*Clear)				(CircularQue_Typedef** quePtr);
+	void						(*Clear)				(CircularQue_Typedef*  quePtr);
 }CircularQueFunctions_Typedef;
 
 bool Initialize_CircularQueLib(CircularQueFunctions_Typedef** ptr);
