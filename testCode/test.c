@@ -115,7 +115,7 @@ static void writeCircularQue(CircularQue_Typedef* ptr,uint8_t itemInLine) {
 	for (uint32_t i = 0; i < ptr->Size; i++) {
 
 		fu.vp = ptr->QuePtr[i];
-		printIntOnSpesificLocation(i * 4, line, fu.vf);
+		printIntOnSpesificLocation(i * 4, line, (int)fu.vf);
 
 		if (!(i % itemInLine) && (i != 0))
 			printf("\n");
