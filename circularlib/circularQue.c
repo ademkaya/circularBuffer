@@ -14,6 +14,9 @@
 		CQue->Push(ptr, (void*)5);
 		int g = CQue->Pop(ptr);
 
+		CQue->Free(&ptr);
+
+		return 0;
 	}
 
 */
@@ -90,12 +93,13 @@ static bool UpdateCapacity(CircularQue_Typedef* ptr, uint16_t capacity) {
 	if ((!ptr->QuePtr)||(ptr == NULL))				/* if not initialized previously */
 		return retVal;
 
-	ptr->QuePtr = (void**)realloc(ptr->QuePtr, (capacity * sizeof(void*)));
-	if (ptr->QuePtr == NULL) {
-		/* assign previous size back again */
-		ptr->QuePtr = (void**)realloc(ptr->QuePtr, (ptr->Size * sizeof(void*)));
+	void** temp = NULL;
+
+	temp = (void**)realloc(ptr->QuePtr, (capacity * sizeof(void*)));
+	if (temp != NULL)
+		ptr->QuePtr = temp;
+	else
 		return retVal;
-	}
 
 	/* clear rest of the array */
 	if (((int)(capacity - ptr->Size)) > 0) {
