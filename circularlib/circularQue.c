@@ -1,5 +1,23 @@
 #include "circularQue.h"
 
+/*
+	----- USAGE -----
+
+	#define		CBSize		8
+	CircularQueFunctions_Typedef* CQue = NULL;
+	CircularQue_Typedef*		  ptr  = NULL;
+	int main(){
+		Initialize_CircularQueLib(&CQue);
+		ptr = CQue->Init_CircularQue(CBSize);
+		CQue->Clear(ptr);
+
+		CQue->Push(ptr, (void*)5);
+		int g = CQue->Pop(ptr);
+
+	}
+
+*/
+
 static CircularQue_Typedef* Init_CircularQue(uint16_t capacity);
 static bool					UpdateCapacity(CircularQue_Typedef* ptr, uint16_t capacity);
 static void					Clear(CircularQue_Typedef* quePtr);
